@@ -5,6 +5,10 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     home: FirstPage(),
+    routes: {
+      '/first': (context) => FirstPage(),
+      '/second': (context) => SecondPage(),
+    },
   ));
 }
 
@@ -35,7 +39,6 @@ class FirstPage extends StatelessWidget {
 
 class SecondPage extends StatelessWidget {
   final User user;
-  const SecondPage({required this.user});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
