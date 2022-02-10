@@ -25,7 +25,7 @@ class FirstPage extends StatelessWidget {
           child: RaisedButton(
             onPressed: () {
               User user = User(name: 'Alex', age: 35);
-              Navigator.pushNamed(context, '/second');
+              Navigator.pushNamed(context, '/second', arguments: user);
             },
             child: const Text('Second Page'),
           ),
