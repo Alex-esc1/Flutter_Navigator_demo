@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, deprecated_member_use
+// ignore_for_file: deprecated_member_use, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 
@@ -35,23 +35,26 @@ class FirstPage extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class SecondPage extends StatelessWidget {
-  final User user;
+  late User user;
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('${user.name} - ${user.age}'),
-          centerTitle: true,
-        ),
-        body: Center(
-          child: RaisedButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: const Text('Go Back'),
-          ),
+    // ignore: prefer_typing_uninitialized_variables
+    RouteSettings settings = ModalRoute.of(context).settings;
+    user = settings.arguments;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('${user.name} - ${user.age}'),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: RaisedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Go Back'),
         ),
       ),
     );
