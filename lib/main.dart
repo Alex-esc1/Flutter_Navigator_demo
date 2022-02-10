@@ -20,9 +20,9 @@ class FirstPage extends StatelessWidget {
         body: Center(
           child: RaisedButton(
             onPressed: () {
-              User user = User(name: 'Alex', age: 35)
-              Route route =
-                  MaterialPageRoute(builder: (context) => SecondPage(user:user));
+              User user = User(name: 'Alex', age: 35);
+              Route route = MaterialPageRoute(
+                  builder: (context) => SecondPage(user: user));
               Navigator.push(context, route);
             },
             child: const Text('Second Page'),
@@ -35,13 +35,13 @@ class FirstPage extends StatelessWidget {
 
 class SecondPage extends StatelessWidget {
   final User user;
-  SecondPage({this.user});
+  const SecondPage({required this.user});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text("Second Page"),
+          title: Text('${user.name} - ${user.age}'),
           centerTitle: true,
         ),
         body: Center(
